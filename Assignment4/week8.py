@@ -26,7 +26,6 @@ x_train = x_train.astype("float32") / 255
 x_test = x_test.astype("float32") / 255
 print("orig x_train shape:", x_train.shape)
 
-
 # convert class vectors to binary class matrices
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
