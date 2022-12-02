@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 plt.rc('font', size=18)
 plt.rcParams['figure.constrained_layout.use'] = True
 import sys
+import time
+
 
 # Model / data parameters
 num_classes = 10
@@ -30,15 +32,19 @@ print("orig x_train shape:", x_train.shape)
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
+start_time = time.time()
+
 use_saved_model = False
 if use_saved_model:
 	model = keras.models.load_model("cifar.model")
 else:
 	model = keras.Sequential()
 	model.add(Conv2D(16, (3,3), padding='same', input_shape=x_train.shape[1:],activation='relu'))
-	model.add(Conv2D(16, (3,3), strides=(2,2), padding='same', activation='relu'))
+	model.add(Conv2D(16, (3,3), padding='same', activation='relu'))
+	model.add(MaxPooling2D((2, 2), padding='same'))
 	model.add(Conv2D(32, (3,3), padding='same', activation='relu'))
-	model.add(Conv2D(32, (3,3), strides=(2,2), padding='same', activation='relu'))
+	model.add(Conv2D(32, (3,3), padding='same', activation='relu'))
+	model.add(MaxPooling2D((2, 2), padding='same'))
 	model.add(Dropout(0.5))
 	model.add(Flatten())
 	model.add(Dense(num_classes, activation='softmax',kernel_regularizer=tf.keras.regularizers.l1(0.0001)))
@@ -48,6 +54,7 @@ else:
 	batch_size = 128
 	epochs = 20
 	history = model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
+	print("--- %s seconds ---" % (time.time() - start_time))
 	model.save("cifar.model")
 	plt.subplot(211)
 	plt.plot(history.history['accuracy'])
