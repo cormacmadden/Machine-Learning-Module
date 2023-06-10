@@ -15,11 +15,12 @@ Use each of these trained classifiers to predict the target values in the traini
 Create two additional features by adding the square of each feature (i.e. giving four features in total). Train a logistic regression classifier. Use the trained classifier to predict the target values in the training data. Plot these predictions and the actual target values from the data using the same style of plot.
 
 <p align="center">
-<img src="Assignment1/Figures/LogRegression.jpg" alt="reg" width = "30%" height="20%"></img>
-<img src="Assignment1/Figures/LogRegressionSquaredClassifiers.jpg" alt="reg2" width = "30%" height="20%"></img>
+<img src="Assignment1/Figures/LogRegression.jpg" alt="reg" width = "40%" height="20%"></img>
+<img src="Assignment1/Figures/LogRegressionSquaredClassifiers.jpg" alt="reg2" width = "40%" height="20%"></img>
 </p>
 
  ---
+ 
 ## Assignment 2
 In addition to the two features in the data file add extra polynomial features equal to all combinations of powers of the two features up to power 5.
 Train Lasso regression models with these polynomial features for a large range of values of C e.g. 1, 10, 1000 (you might need to adjust these values for your data, start by making C small enough that the trained model has all parameters zero, then increase from there). Report the parameters of the trained models, discuss how they change as C is varied.
@@ -27,10 +28,13 @@ For each of the models generate predictions for the target variable.
 Use 5-fold cross-validation to plot the mean and standard deviation of the prediction error vs C. Use the matplotlib errorbar function for this. You will need to choose the range of values of C to plot, justify your choice. Repeat for a Ridge Regression model.
 
 <p align="center">
-<img src="Assignment2/Figures/3DGraphs.png" alt="3D Graphs" width = "50%" height="20%"></img>
+<img src="Assignment2/Figures/3DGraphs.png" alt="3D Graphs" width = "80%" height="20%"></img>
 </p>
+
 ---
+
 ## Assignment 3
+
 Augment the two features in the dataset with polynomial features and train a Logistic Regression classifier with L2 penalty added to the cost function. Use cross-validation to select the maximum order of polynomial to use and the weight C given to the penalty in the cost function. You’ll also need to select the range of C values to consider and the range of maximum polynomial orders.
 
 Train a kNN classifier on the data. Use cross-validation to select k, again presenting data and explanations/analysis to justify your choice.
@@ -50,5 +54,6 @@ Use keras to build a convolutional network for classification of images in the C
 performance of the ConvNet after training. Modify the ConvNet to use max-pooling i.e. replace the 16 channel strided layer with a 16 channel same layer followed by a (2,2) max-pool layer. Evaluate the performance of this ConvNet. How many parameters does keras say this ConvNet has? For 5K training data point how does the time taken to train the network and the prediction accuracy on the training and test data compare with that of the original network?
 
 <p align="center">
-<img src="Assignment4/Figures/Figure_3_20K.png" alt="BlockDiagram" width = "30%" height="20%"></img>
+<img src="Assignment4/Figures/Figure_1_Loss0.1.png" alt="BlockDiagram" width = "35%" height="20%"></img>
+<img src="Assignment4/Figures/Figure_3_20K.png" alt="BlockDiagram" width = "35%" height="20%"></img>
 </p>
